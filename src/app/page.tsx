@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 4000); // Increased duration for the enhanced animation
+    }, 2000); // Reduced duration for better UX
 
     return () => clearTimeout(timer);
   }, []);
@@ -27,12 +27,12 @@ export default function Home() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-purple-primary flex items-center justify-center relative overflow-hidden">
-        {/* Enhanced particle effects */}
+        {/* Subtle particle effects */}
         <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => {
+          {[...Array(15)].map((_, i) => {
             const left = ((i * 7) % 100) + (i % 3) * 10;
             const top = ((i * 11) % 100) + (i % 5) * 8;
-            const delay = (i * 0.3) % 2;
+            const delay = (i * 0.2) % 1.5;
             
             return (
               <motion.div
@@ -43,10 +43,10 @@ export default function Home() {
                   top: `${top}%`,
                 }}
                 initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+                animate={{ scale: 1, opacity: 0.6 }}
                 transition={{ 
                   delay: delay,
-                  duration: 1,
+                  duration: 0.8,
                   repeat: Infinity,
                   repeatType: "reverse"
                 }}
@@ -55,53 +55,46 @@ export default function Home() {
           })}
         </div>
 
-        {/* Main welcome container with dramatic scale animation */}
+        {/* Main welcome container with smooth animation */}
         <motion.div 
           className="text-center space-y-8 z-10 relative"
           initial={{ 
-            width: 0, 
-            height: 0, 
-            scale: 0,
+            scale: 0.8,
             opacity: 0 
           }}
           animate={{ 
-            width: "auto", 
-            height: "auto", 
             scale: 1,
             opacity: 1 
           }}
           transition={{ 
-            duration: 2,
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 100
+            duration: 0.8,
+            ease: "easeOut"
           }}
         >
-          {/* Background glow effect */}
+          {/* Subtle background glow */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-yellow-400/20 rounded-full blur-3xl"
+            className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-yellow-400/10 rounded-full blur-2xl"
             initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 2, opacity: 1 }}
-            transition={{ duration: 2.5, delay: 0.5 }}
+            animate={{ scale: 1.5, opacity: 1 }}
+            transition={{ duration: 1.5, delay: 0.3 }}
           />
 
-          {/* Main emoji with dramatic entrance */}
+          {/* Main emoji with gentle entrance */}
           <motion.div
             initial={{ 
-              scale: 0, 
-              rotate: -180,
-              y: -100 
+              scale: 0.8, 
+              opacity: 0,
+              y: 20 
             }}
             animate={{ 
-              scale: 1.2, 
-              rotate: 0,
+              scale: 1, 
+              opacity: 1,
               y: 0 
             }}
             transition={{ 
-              duration: 1.5, 
-              type: "spring",
-              stiffness: 200,
-              delay: 0.3
+              duration: 0.8, 
+              ease: "easeOut",
+              delay: 0.2
             }}
             className="text-9xl mb-6 relative z-10"
           >
@@ -110,44 +103,41 @@ export default function Home() {
       
           {/* "BY" text with fade in */}
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             className="text-3xl text-white/90 font-light relative z-10"
           >
             BY
           </motion.div>
 
-          {/* Author name with dramatic scale and glow effect */}
+          {/* Author name with subtle glow effect */}
           <motion.div
             initial={{ 
-              scale: 0, 
+              scale: 0.9, 
               opacity: 0,
-              y: 100,
-              textShadow: "0 0 0px rgba(255,255,255,0)"
+              y: 20
             }}
             animate={{ 
               scale: 1, 
               opacity: 1,
-              y: 0,
-              textShadow: "0 0 30px rgba(255,255,255,0.8)"
+              y: 0
             }}
             transition={{ 
-              duration: 1.5, 
-              delay: 1.8,
-              type: "spring",
-              stiffness: 150
+              duration: 0.8, 
+              delay: 0.8,
+              ease: "easeOut"
             }}
-            className="text-8xl font-bold text-white mb-4 relative z-10 animate-textGlow"
+            className="text-8xl font-bold text-white mb-4 relative z-10"
           >
             ALI ZOKAEI
           </motion.div>
 
-          {/* Subtitle with staggered animation */}
+          {/* Subtitle with smooth animation */}
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 2.5 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
             className="text-xl text-white/80 font-light relative z-10"
           >
             Beauty & Nail Art Specialist
@@ -157,7 +147,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 3 }}
+            transition={{ duration: 0.6, delay: 1.4 }}
             className="flex justify-center space-x-2 relative z-10"
           >
             {[0, 1, 2].map((i) => (
@@ -165,11 +155,11 @@ export default function Home() {
                 key={i}
                 className="w-3 h-3 bg-white rounded-full"
                 animate={{ 
-                  scale: [1, 1.5, 1],
-                  opacity: [0.5, 1, 0.5]
+                  scale: [1, 1.2, 1],
+                  opacity: [0.6, 1, 0.6]
                 }}
                 transition={{ 
-                  duration: 1.5,
+                  duration: 1.2,
                   repeat: Infinity,
                   delay: i * 0.2
                 }}
@@ -192,16 +182,16 @@ export default function Home() {
         
         {/* Header */}
         <motion.header 
-          initial={{ y: -100, opacity: 0 }}
+          initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="glass-light border-b border-purple-200/30 relative z-10 flex-shrink-0"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-20">
               <motion.div 
                 className="flex items-center space-x-4"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.02 }}
               >
                 <div className="text-4xl animate-wave">✨</div>
                 <h1 className="text-3xl font-bold text-gradient-purple-yellow">BEAUTY HAVEN</h1>
@@ -212,7 +202,7 @@ export default function Home() {
                     key={item}
                     href={`#${item.toLowerCase()}`} 
                     className="text-gray-700 hover:text-purple-600 transition-colors font-medium relative group"
-                    whileHover={{ y: -3 }}
+                    whileHover={{ y: -2 }}
                   >
                     {item}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-yellow-500 transition-all duration-300 group-hover:w-full"></span>
@@ -220,8 +210,8 @@ export default function Home() {
                 ))}
               </div>
               <motion.a 
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
                 href="tel:5551234567"
                 className="hidden md:block bg-purple-primary text-white px-8 py-3 rounded-full font-semibold hover-glow neon-glow shadow-lg"
               >
@@ -236,20 +226,12 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
               <motion.div 
-                initial={{ x: -100, opacity: 0 }}
+                initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 className="space-y-10"
               >
                 <div className="space-y-6">
-                  {/* <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-7xl"
-                  >
-                    💅✨💄
-                  </motion.div> */}
                   <h1 className="text-7xl lg:text-8xl font-bold leading-tight">
                     <span className="text-gradient-purple-yellow">Transform</span>
                     <br />
@@ -262,16 +244,16 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6">
                   <motion.a 
-                    whileHover={{ scale: 1.05, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                     href="tel:5551234567"
                     className="bg-purple-primary text-white px-12 py-5 rounded-full text-lg font-semibold hover-glow neon-glow shadow-xl text-center"
                   >
                     Start Your Journey ✨
                   </motion.a>
                   <motion.button 
-                    whileHover={{ scale: 1.05, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                     className="border-yellow px-12 py-5 rounded-full text-lg font-semibold text-yellow-primary hover:bg-yellow-light transition-colors"
                   >
@@ -280,9 +262,9 @@ export default function Home() {
                 </div>
               </motion.div>
               <motion.div 
-                initial={{ x: 100, opacity: 0 }}
+                initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.4 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
                 className="relative"
               >
                 <div className="relative">
@@ -308,9 +290,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-purple-100/30 to-yellow-100/30"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div 
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center mb-20"
           >
@@ -324,11 +306,11 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {/* Nail Services */}
             <motion.div 
-              initial={{ y: 50, opacity: 0 }}
+              initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -15, scale: 1.03 }}
+              whileHover={{ y: -8, scale: 1.02 }}
               className="bg-white rounded-3xl p-10 shadow-xl hover-lift border-purple"
             >
               <div className="w-24 h-24 bg-purple-primary rounded-full flex items-center justify-center mb-8 mx-auto neon-glow">
@@ -360,11 +342,11 @@ export default function Home() {
 
             {/* Hair Services */}
             <motion.div 
-              initial={{ y: 50, opacity: 0 }}
+              initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ y: -15, scale: 1.03 }}
+              whileHover={{ y: -8, scale: 1.02 }}
               className="bg-white rounded-3xl p-10 shadow-xl hover-lift border-yellow"
             >
               <div className="w-24 h-24 bg-yellow-primary rounded-full flex items-center justify-center mb-8 mx-auto neon-glow-yellow">
@@ -396,11 +378,11 @@ export default function Home() {
 
             {/* Makeup Services */}
             <motion.div 
-              initial={{ y: 50, opacity: 0 }}
+              initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ y: -15, scale: 1.03 }}
+              whileHover={{ y: -8, scale: 1.02 }}
               className="bg-white rounded-3xl p-10 shadow-xl hover-lift border-purple"
             >
               <div className="w-24 h-24 bg-purple-primary rounded-full flex items-center justify-center mb-8 mx-auto neon-glow">
@@ -437,9 +419,9 @@ export default function Home() {
       <section id="gallery" className="py-24 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div 
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center mb-20"
           >
@@ -458,19 +440,19 @@ export default function Home() {
             ].map((image, index) => (
               <motion.div
                 key={index}
-                initial={{ scale: 0, opacity: 0 }}
+                initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6, delay: image.delay }}
+                transition={{ duration: 0.5, delay: image.delay }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.08, rotate: 3 }}
-                className="relative group overflow-hidden rounded-3xl shadow-xl hover-rotate"
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="relative group overflow-hidden rounded-3xl shadow-xl"
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   width={300}
                   height={400}
-                  className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-125"
+                  className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -488,9 +470,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div 
-              initial={{ x: -50, opacity: 0 }}
+              initial={{ x: -30, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="space-y-8"
             >
@@ -507,21 +489,21 @@ export default function Home() {
               </p>
               <div className="grid grid-cols-3 gap-8 pt-8">
                 <motion.div 
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.05 }}
                   className="text-center"
                 >
                   <div className="text-5xl font-bold text-purple-primary">1500+</div>
                   <div className="text-gray-600">Happy Clients</div>
                 </motion.div>
                 <motion.div 
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.05 }}
                   className="text-center"
                 >
                   <div className="text-5xl font-bold text-yellow-primary">10+</div>
                   <div className="text-gray-600">Years Experience</div>
                 </motion.div>
                 <motion.div 
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.05 }}
                   className="text-center"
                 >
                   <div className="text-5xl font-bold text-purple-primary">800+</div>
@@ -530,9 +512,9 @@ export default function Home() {
               </div>
             </motion.div>
             <motion.div 
-              initial={{ x: 50, opacity: 0 }}
+              initial={{ x: 30, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="relative"
             >
@@ -555,9 +537,9 @@ export default function Home() {
       <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-white/80 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div 
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center mb-20"
           >
@@ -568,14 +550,14 @@ export default function Home() {
           </motion.div>
           
           <motion.div 
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             <motion.div 
-              whileHover={{ y: -8, scale: 1.03 }}
+              whileHover={{ y: -5, scale: 1.02 }}
               className="bg-white rounded-3xl p-10 shadow-xl text-center border-purple hover-lift"
             >
               <div className="w-20 h-20 bg-purple-primary rounded-full flex items-center justify-center mx-auto mb-6 neon-glow">
@@ -586,7 +568,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              whileHover={{ y: -8, scale: 1.03 }}
+              whileHover={{ y: -5, scale: 1.02 }}
               className="bg-white rounded-3xl p-10 shadow-xl text-center border-yellow hover-lift"
             >
               <div className="w-20 h-20 bg-yellow-primary rounded-full flex items-center justify-center mx-auto mb-6 neon-glow-yellow">
@@ -598,7 +580,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              whileHover={{ y: -8, scale: 1.03 }}
+              whileHover={{ y: -5, scale: 1.02 }}
               className="bg-white rounded-3xl p-10 shadow-xl text-center border-purple hover-lift"
             >
               <div className="w-20 h-20 bg-purple-primary rounded-full flex items-center justify-center mx-auto mb-6 neon-glow">
@@ -610,7 +592,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              whileHover={{ y: -8, scale: 1.03 }}
+              whileHover={{ y: -5, scale: 1.02 }}
               className="bg-white rounded-3xl p-10 shadow-xl text-center border-yellow hover-lift"
             >
               <div className="w-20 h-20 bg-yellow-primary rounded-full flex items-center justify-center mx-auto mb-6 neon-glow-yellow">
@@ -623,9 +605,9 @@ export default function Home() {
           </motion.div>
 
           <motion.div 
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
             className="text-center mt-20"
           >
@@ -637,8 +619,8 @@ export default function Home() {
                   Book your appointment today and experience the magic of professional beauty services!
                 </p>
                 <motion.a 
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                   href="tel:5551234567"
                   className="bg-white text-purple-primary px-12 py-5 rounded-full font-bold text-xl hover:bg-gray-50 transition-colors inline-block shadow-xl"
                 >
@@ -652,9 +634,9 @@ export default function Home() {
 
       {/* Footer */}
       <motion.footer 
-        initial={{ y: 50, opacity: 0 }}
+        initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6 }}
         viewport={{ once: true }}
         className="bg-purple-primary text-white py-20 px-4 sm:px-6 lg:px-8 relative"
       >
@@ -692,21 +674,21 @@ export default function Home() {
               <h4 className="text-xl font-bold mb-8 text-white">Follow Us</h4>
               <div className="flex space-x-6">
                 <motion.a 
-                  whileHover={{ scale: 1.3, y: -3 }}
+                  whileHover={{ scale: 1.2, y: -2 }}
                   href="#" 
                   className="text-white/90 hover:text-white text-3xl transition-colors"
                 >
                   📱
                 </motion.a>
                 <motion.a 
-                  whileHover={{ scale: 1.3, y: -3 }}
+                  whileHover={{ scale: 1.2, y: -2 }}
                   href="#" 
                   className="text-white/90 hover:text-white text-3xl transition-colors"
                 >
                   📷
                 </motion.a>
                 <motion.a 
-                  whileHover={{ scale: 1.3, y: -3 }}
+                  whileHover={{ scale: 1.2, y: -2 }}
                   href="#" 
                   className="text-white/90 hover:text-white text-3xl transition-colors"
                 >
